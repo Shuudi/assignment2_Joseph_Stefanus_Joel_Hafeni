@@ -1,0 +1,55 @@
+type DepartmentObjective {
+  id: ID!
+  description: String!
+}
+
+type Employee {
+  id: ID!
+  name: String!
+  departmentId: ID!
+}
+
+type KPI {
+  id: ID!
+  description: String!
+  score: Float!
+  employeeId: ID!
+}
+
+type Supervisor {
+  id: ID!
+  name: String!
+  assignedEmployees: [Employee]!
+}
+
+type Query {
+  departmentObjectives: [DepartmentObjective]!
+  employeeScores(departmentId: ID!): [EmployeeScore]!
+  employeeKPIs(employeeId: ID!): [KPI]!
+}
+
+type Mutation {
+  createDepartmentObjective(input: DepartmentObjectiveInput!): DepartmentObjective!
+  deleteDepartmentObjective(objectiveId: ID!): Boolean!
+  assignEmployeeToSupervisor(employeeId: ID!, supervisorId: ID!): Boolean!
+  approveEmployeeKPIs(employeeId: ID!): Boolean!
+  deleteEmployeeKPIs(kpiId: ID!): Boolean!
+  updateEmployeeKPIs(kpiId: ID!, score: Float!): KPI!
+  createKPI(input: KPIInput!): KPI!
+  gradeSupervisor(supervisorId: ID!, score: Float!): Supervisor!
+}
+
+input DepartmentObjectiveInput {
+  description: String!
+}
+
+input KPIInput {
+  description: String!
+  score: Float!
+  employeeId: ID!
+}
+
+type EmployeeScore {
+  employeeId: ID!
+  totalScore: Float!
+}
