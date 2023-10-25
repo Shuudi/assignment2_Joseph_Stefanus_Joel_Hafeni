@@ -1,0 +1,8 @@
+query {
+  supervisor(id: "EmployeeId4") {
+    assignedEmployees {
+      id
+      name
+    }
+  }
+}

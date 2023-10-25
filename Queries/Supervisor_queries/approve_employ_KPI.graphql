@@ -1,0 +1,3 @@
+mutation {
+  approveEmployeeKPIs(employeeId: "EmployeeId1")
+}

@@ -1,0 +1,3 @@
+mutation {
+  deleteEmployeeKPIs(kpiId: "kpiId2")
+}

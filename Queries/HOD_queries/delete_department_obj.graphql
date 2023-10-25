@@ -1,0 +1,6 @@
+mutation {
+  createDepartmentObjective(input: { description: "Student success" }) {
+    id
+    description
+  }
+}

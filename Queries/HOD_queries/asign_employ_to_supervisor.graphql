@@ -1,0 +1,3 @@
+mutation {
+  assignEmployeeToSupervisor(employeeId: "employeeId3", supervisorId: "SupervisorId2")
+}

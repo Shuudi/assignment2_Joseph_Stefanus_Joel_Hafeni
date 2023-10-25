@@ -1,0 +1,6 @@
+mutation {
+  gradeSupervisor(supervisorId: "SupeervisorId1", score: 4.8) {
+    id
+    name
+  }
+}

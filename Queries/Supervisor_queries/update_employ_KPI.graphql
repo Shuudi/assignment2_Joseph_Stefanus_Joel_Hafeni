@@ -1,0 +1,7 @@
+mutation {
+  updateEmployeeKPIs(kpiId: "kpiId1", score: 4.5) {
+    id
+    description
+    score
+  }
+}

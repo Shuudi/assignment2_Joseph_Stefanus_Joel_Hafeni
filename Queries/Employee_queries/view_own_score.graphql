@@ -1,0 +1,9 @@
+query {
+  employee(id: "EmployeeId4") {
+    employeeKPIs {
+      id
+      description
+      score
+    }
+  }
+}

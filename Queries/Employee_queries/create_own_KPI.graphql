@@ -1,0 +1,7 @@
+mutation {
+  createKPI(input: { description: "New KPI", score: 3.0, employeeId: "EmployeeId2" }) {
+    id
+    description
+    score
+  }
+}
