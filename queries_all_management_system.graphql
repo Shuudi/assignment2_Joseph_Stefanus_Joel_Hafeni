@@ -1,0 +1,96 @@
+# HoD Queries
+
+# Query to create a department objective
+mutation CreateDepartmentObjective($description: String!) {
+  createDepartmentObjective(input: { description: $description }) {
+    id
+    description
+  }
+}
+
+# Query to delete a department objective
+mutation DeleteDepartmentObjective($objectiveId: ID!) {
+  deleteDepartmentObjective(objectiveId: $objectiveId)
+}
+
+# Query to view total scores of employees in a department
+query ViewEmployeesTotalScores {
+  departmentObjectives {
+    id
+    description
+  }
+  employeeScores(departmentId: "Id1") {
+    employeeId
+    totalScore
+  }
+}
+
+# Query to assign an employee to a supervisor
+mutation AssignEmployeeToSupervisor($employeeId: ID!, $supervisorId: ID!) {
+  assignEmployeeToSupervisor(employeeId: $employeeId, supervisorId: $supervisorId)
+}
+
+# Supervisor Queries
+
+# Query to approve an employee's KPIs
+mutation ApproveEmployeeKPIs($employeeId: ID!) {
+  approveEmployeeKPIs(employeeId: $employeeId)
+}
+
+# Query to delete an employee's KPI
+mutation DeleteEmployeeKPIs($kpiId: ID!) {
+  deleteEmployeeKPIs(kpiId: $kpiId)
+}
+
+# Query to update an employee's KPI score
+mutation UpdateEmployeeKPIs($kpiId: ID!, $score: Float!) {
+  updateEmployeeKPIs(kpiId: $kpiId, score: $score) {
+    id
+    description
+    score
+  }
+}
+
+# Query to view scores of assigned employees
+query ViewAssignedEmployeeScores {
+  employeeScores(departmentId: "Id2") {
+    employeeId
+    totalScore
+  }
+}
+
+# Query to grade an employee's KPIs
+mutation GradeEmployeeKPIs($employeeId: ID!, $score: Float!) {
+  gradeSupervisor(supervisorId: $employeeId, score: $score) {
+    id
+    name
+  }
+}
+
+# Employee Queries
+
+# Query to create a new KPI for the employee
+mutation CreateKPI($description: String!, $score: Float!) {
+  createKPI(input: { description: $description, score: $score, employeeId: "EmployeeId4" }) {
+    id
+    description
+    score
+  }
+}
+
+# Query to view the employee's own scores
+query ViewOwnScores {
+  employeeKPIs(employeeId: "EmployeeId3") {
+    id
+    description
+    score
+  }
+}
+
+# Query to grade the supervisor
+mutation GradeSupervisor($supervisorId: ID!, $score: Float!) {
+  gradeSupervisor(supervisorId: $supervisorId, score: $score) {
+    id
+    name
+  }
+}
